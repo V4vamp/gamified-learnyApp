@@ -7,6 +7,7 @@ const router = useRouter();
 const startQuiz = () => {
   router.push("/quiz"); // Navigate to the Quiz Page
 };
+
 </script>
 
 <template>
@@ -15,6 +16,12 @@ const startQuiz = () => {
         <h2>Start</h2>
         <p>Click the button below to start the quiz.</p>
         <button @click="startQuiz">Start Quiz</button>
+        <p>Or</p>
+        <button
+        @click="() => router.push('/course-preview/1')"
+        >
+            Go to Course Preview
+        </button>
     </div>
 </template>
 

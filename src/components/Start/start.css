@@ -35,4 +35,11 @@
         align-items: center;
         justify-content: center;
     }
+    button:last-child {
+        background-color: #FFF;
+        color: #5111ad;
+        border: none;
+        font-size: 20;
+        font-weight: 700;
+    }
 }
