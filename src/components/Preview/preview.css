@@ -330,4 +330,7 @@ footer {
   main .quiz-section .terms .term {
     width: 30%;
   }
+  footer {
+    width: 100%;
+  }
 }
