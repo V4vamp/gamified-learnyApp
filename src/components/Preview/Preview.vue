@@ -169,7 +169,7 @@ const formatTime = (seconds) => {
     </main>
     <footer>
       <button class="reset" @click="reset">
-        <RefreshCw class="icon" />
+        <RefreshCw class="reset-icon" />
       </button>
       <button @click="nextQuestion">
         Continue

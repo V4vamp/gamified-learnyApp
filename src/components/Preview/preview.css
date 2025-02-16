@@ -332,5 +332,14 @@ footer {
   }
   footer {
     width: 100%;
+    button:last-child {
+      width: 80%;
+    }
+    button:first-child {
+      .reset-icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
   }
 }
