@@ -20,6 +20,8 @@ watch(
 
 const draggedTerm = ref(null);
 const userAnswers = ref({});
+const score = ref(0);
+const totalScore = ref(0)
 
 const startDrag = (term) => {
   draggedTerm.value = term;
@@ -35,15 +37,23 @@ const dropDefinition = (termKey) => {
     correct: isCorrect,
   };
 
+  if (isCorrect) {
+      score.value += 4;
+      totalScore.value += 4;
+    }
+
   draggedTerm.value = null;
 };
 
 const nextQuestion = () => {
+
+  localStorage.setItem("previewScore", totalScore.value);
+  
   const nextIndex = currentIndex.value + 1;
   if (nextIndex < previewQuestions.length) {
     router.push(`/course-preview/${nextIndex + 1}`);
   } else {
-    router.push("/results");
+    router.push("/preview-results");
   }
 };
 
@@ -53,6 +63,8 @@ const back = () => {
 
 const reset = () => {
   userAnswers.value = {};
+  score.value = 0;
+  totalScore.value -= score.value;
 };
 
 const timeLeft = ref(60);
@@ -77,6 +89,7 @@ watch(
     currentIndex.value = parseInt(newId) - 1;
     question.value = previewQuestions[currentIndex.value];
     startTimer();
+    score.value = 0;
   }
 );
 
@@ -117,9 +130,12 @@ const formatTime = (seconds) => {
             ></span>
           </div>
         </div>
+        <span class="score">
+          Score: {{ totalScore }}
+        </span>
         <div
           class="right-section"
-          :class="{ warning: timeLeft <= 15, pulsing: timeLeft <= 15 }"
+          :class="{ warning: timeLeft <= 15 }"
         >
           <Alarm class="time" />
           <h6>{{ formatTime(timeLeft) }}</h6>

@@ -7,7 +7,7 @@ const score = ref(0);
 const router = useRouter();
 
 onMounted(() => {
-  const storedScore = localStorage.getItem("quizScore");
+  const storedScore = localStorage.getItem("previewScore");
   if (storedScore) {
     score.value = parseInt(storedScore);
   }
@@ -15,7 +15,7 @@ onMounted(() => {
 
 const restartQuiz = () => {
   localStorage.setItem("quizScore", 0);
-  router.push("/question/1");
+  router.push("/course-preview/1");
 };
 </script>
 

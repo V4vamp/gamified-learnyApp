@@ -46,7 +46,7 @@ main {
   gap: 2rem;
 }
 main .top-section {
-  width: 75%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -77,7 +77,7 @@ main .top-section .left-section {
   background-color: #ccc;
 }
 .progress-view .active {
-    background-color: #5111ad;
+  background-color: #5111ad;
 }
 
 .right-section {
@@ -100,26 +100,30 @@ main .top-section .left-section {
     margin: 0;
   }
 }
-.right-section .warning {
-    background-color: #ffcdd2 !important;
-    border: #f44336 1px solid !important;
-    color: #f44336 !important;
+.top-section .warning {
+  background-color: #ffcdd2 !important;
+  border: #f44336 1px solid !important;
+  color: #f44336 !important;
+  animation: pulse 1s infinite !important;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
-  .right-section .pulsing {
-    animation: pulse 1s infinite !important;
+  50% {
+    transform: scale(1.1);
   }
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
+  100% {
+    transform: scale(1);
   }
+}
+.top-section .score {
+  font-family: "Nunito Sans", serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #5111ad;
+}
 main {
   width: 100%;
   display: flex;
@@ -156,23 +160,22 @@ main .quiz-section {
   gap: 16px;
   flex-wrap: wrap;
   justify-content: center;
-  
 }
 .quiz-section .definitions .definition {
-    width: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    border: #5111ad 1px dashed;
-    background-color: #f3f3f3;
-    border-radius: 8px;
-    font-family: "Nunito Sans", serif;
-    font-size: 16px;
-    transition: background-color 0.3s;
-    text-align: center;
-  }
-  :deep(.correct) {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: #5111ad 1px dashed;
+  background-color: #f3f3f3;
+  border-radius: 8px;
+  font-family: "Nunito Sans", serif;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+:deep(.correct) {
   background-color: #c8e6c9 !important;
   border: #4caf50 1px solid !important;
   color: #4caf50;
@@ -200,7 +203,9 @@ main .quiz-section {
     background-color: #f3f3f3;
     cursor: grab;
     user-select: none;
-    transition: transform 0.2s ease-in-out, opacity 0.2s;
+    transition:
+      transform 0.2s ease-in-out,
+      opacity 0.2s;
   }
   .term:active {
     cursor: grabbing;
@@ -209,44 +214,53 @@ main .quiz-section {
   }
 }
 span {
-    transition: opacity 0.3s ease-in-out;
-  }
-
-footer {
-    width: 30%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 2.5rem;
-    button:first-child {
-        border: 1px solid #ccc;
-        background-color: transparent;
-        border-radius: 12px;
-        padding: 16px;
-        /* height: 44px; */
-        cursor: pointer;
-        
-    }
-    button:last-child {
-        border: none;
-        width: 50%;
-        background-color: #5111ad;
-        color: #fff;
-        border-radius: 12px;
-        padding: 16px 32px;
-        cursor: pointer;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
-        font-family: "Nunito Sans", serif;
-        font-size: 16px;
-        font-weight: 700;
-    }
+  transition: opacity 0.3s ease-in-out;
 }
 
+footer {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  button:first-child {
+    border: 1px solid #ccc;
+    background-color: transparent;
+    border-radius: 12px;
+    padding: 16px;
+    /* height: 44px; */
+    cursor: pointer;
+  }
+  button:last-child {
+    border: none;
+    width: 50%;
+    background-color: #5111ad;
+    color: #fff;
+    border-radius: 12px;
+    padding: 16px 32px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    font-family: "Nunito Sans", serif;
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+@media screen and (max-width: 1024px) {
+  main .top-section .score {
+    margin-left: -15%;
+  }
+  footer {
+    width: 50%;
+    button:last-child {
+      width: 70%;
+    }
+  }
+}
 @media screen and (max-width: 768px) {
   header {
     width: 100%;
@@ -257,9 +271,11 @@ footer {
   main .top-section {
     width: 100%;
   }
-  main .top-section .left-section {
-    width: 100%;
-    gap: 1rem;
+  main .top-section .left-section .progress-view .progress {
+    width: 20px;
+  }
+  main .top-section .score {
+    margin-left: -8%;
   }
   main .quiz-section .definitions {
     width: 100%;
@@ -300,14 +316,15 @@ footer {
   main .top-section {
     width: 100%;
   }
-  main .top-section .left-section {
-    width: 100%;
+  .top-section .score {
+    font-size: 1rem;
+    margin-left: -14%;
   }
   main .top-section .left-section h4 {
     font-size: 14px;
   }
   main .top-section .left-section .progress-view .progress {
-    width: 20px;
+    width: 16px;
     height: 4px;
   }
   main .top-section .right-section {

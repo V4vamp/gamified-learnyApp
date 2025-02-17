@@ -40,8 +40,33 @@
   }
 }
 
+.start {
+  font-weight: 700;
+    font-family: "Plus Jakarta Sans", serif;
+    font-size: 24px;
+    color: #3c3c3c;
+    cursor: pointer;
+    animation: pulse 1s infinite !important;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 @media screen and (max-width: 768px) {
   .result-container {
     padding: 3rem 2rem;
+  }
+}
+@media screen and (max-width: 380px) {
+  .start {
+    font-size: 16px;
   }
 }

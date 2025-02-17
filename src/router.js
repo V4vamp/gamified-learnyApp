@@ -3,6 +3,7 @@ import Start from "./components/Start/Start.vue";
 import Quiz from "./components/Quiz/Quiz.vue";
 import Result from "./components/Result/Result.vue";
 import Preview from "./components/Preview/Preview.vue";
+import PreviewResult from "./components/Result/PreviewResult.vue";
 
 const routes = [
   { path: "/", component: Start },
@@ -10,6 +11,7 @@ const routes = [
   { path: '/question/:id', component: Quiz, props: true },
   { path: '/results', component: Result },
   { path: "/course-preview/:id", component: Preview, props: true },
+  { path: '/preview-results', component: PreviewResult },
 ];
 
 const router = createRouter({

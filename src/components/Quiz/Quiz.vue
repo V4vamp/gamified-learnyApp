@@ -58,7 +58,7 @@ const getLetter = (index) => String.fromCharCode(65 + index);
         </header>
         <main class="quiz-main">
             <div class="info-bar">
-                <span>Goal: 100 points</span>
+                <span>Goal: 80 points</span>
                 <span>Current Points: {{ score }}</span>
             </div>
             <div class="quiz-area">
