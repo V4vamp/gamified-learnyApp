@@ -3,7 +3,7 @@ import confetti from "canvas-confetti";
 import { onMounted } from "vue";
 
 const startConfetti = () => {
-  var duration = 60 * 1000;
+  var duration = 15 * 1000;
   var animationEnd = Date.now() + duration;
   var defaults = { startVelocity: 20, spread: 460, ticks: 60, zIndex: 0 };
 
